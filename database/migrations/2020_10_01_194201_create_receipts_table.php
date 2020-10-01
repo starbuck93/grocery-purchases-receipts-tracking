@@ -18,7 +18,7 @@ class CreateReceiptsTable extends Migration
             $table->dateTime('purchase-date', 0);
             $table->string('payment-method',20);
             $table->float('discount-usd',8,2);
-            $table->integer('store_id');
+            $table->integer('store-id');
             $table->timestamps();
         });
     }
