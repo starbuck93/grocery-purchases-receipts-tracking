@@ -10,6 +10,8 @@
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 <div class="my-2 mx-2">
                     <h1>Welcome to The Dashboard</h1>
+                    <h2>Total Spent: ${{ $total_spent }}</h2>
+                    <h2>Your Favorite Item Is: {{ $favorite_item->name }}</h2>
                     <h2>Receipts</h2>
                     @foreach ($receipts as $receipt)
                     <table class="table-auto shadow">
@@ -19,6 +21,7 @@
                             <th class="px-4 py-2">Payment Method</th>
                             <th class="px-4 py-2">Discount $</th>
                             <th class="px-4 py-2">Store Id</th>
+                            <th class="px-4 py-2">Total</th>
                         </tr>
                         <tr>
                             <td class="border px-4 py-2">{{ $receipt->id }}</td>
@@ -26,6 +29,7 @@
                             <td class="border px-4 py-2">{{ $receipt->payment_method }}</td>
                             <td class="border px-4 py-2">${{ $receipt->discount_usd }}</td>
                             <td class="border px-4 py-2">{{ $receipt->store->name }}</td>
+                            <td class="border px-4 py-2">$Total</td>
                         </tr>
                     </table>
                     <h3>Receipt Items</h3>
@@ -34,12 +38,14 @@
                             <th class="px-4 py-2">Id</th>
                             <th class="px-4 py-2">Name</th>
                             <th class="px-4 py-2">Category</th>
+                            <th class="px-4 py-2">Price</th>
                         </tr>
                             @foreach ($receipt->items as $item)
                         <tr>
                             <td class="border px-4 py-2">{{ $item->id }}</td>
                             <td class="border px-4 py-2">{{ $item->name }}</td>
                             <td class="border px-4 py-2">{{ $item->category->name }}</td>
+                            <td class="border px-4 py-2">$Price</td>
                         </tr>
                             @endforeach
                         @endforeach

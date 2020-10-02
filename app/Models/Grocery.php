@@ -47,5 +47,10 @@ class Grocery extends Model
     {
         return $this->belongsTo('App\Models\Item'); //should this be belongsTo or hasOne?
     }
+    
+    public function total_spent()
+    {
+        return $this->price;
+    }
 
 }
