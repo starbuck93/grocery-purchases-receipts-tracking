@@ -25,7 +25,7 @@ class ReceiptFactory extends Factory
             'purchase-date' => $this->faker->dateTime(),
             'payment-method' => $this->faker->creditCardType,
             'discount-usd' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10),
-            'store-id' => $this->faker->randomDigit
+            'store-id' => $this->faker->randomDigitNot(0)
         ];
     }
 }

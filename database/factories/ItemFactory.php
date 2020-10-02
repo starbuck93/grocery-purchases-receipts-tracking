@@ -23,7 +23,7 @@ class ItemFactory extends Factory
     {
         return [
             'name' => $this->faker->safeColorName,
-            'category' => $this->faker->randomDigit
+            'category' => $this->faker->randomDigitNot(0)
         ];
     }
 }

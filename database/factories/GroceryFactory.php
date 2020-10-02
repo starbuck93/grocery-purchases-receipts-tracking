@@ -22,10 +22,10 @@ class GroceryFactory extends Factory
     public function definition()
     {
         return [
-            'item-id' => $this->faker->randomDigit,
+            'item-id' => $this->faker->randomDigitNot(0),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10),
             'qty' => $this->faker->numberBetween($min = 1, $max = 5),
-            'receipt-id' => $this->faker->randomDigit
+            'receipt-id' => $this->faker->randomDigitNot(0)
         ];
     }
 }
