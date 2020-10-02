@@ -15,10 +15,10 @@ class CreateGroceriesTable extends Migration
     {
         Schema::create('groceries', function (Blueprint $table) {
             $table->id();
-            $table->integer("item_id");
+            $table->unsignedBigInteger("item_id");
             $table->float("price",8,2);
             $table->float("qty",8,2);
-            $table->integer("receipt_id");
+            $table->unsignedBigInteger("receipt_id");
             $table->timestamps();
         });
     }
