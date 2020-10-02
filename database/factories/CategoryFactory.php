@@ -23,7 +23,7 @@ class CategoryFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'sub-category' => $this->faker->randomDigitNot(0) 
+            'sub_category' => $this->faker->randomDigitNot(0) 
         ];
     }
 }

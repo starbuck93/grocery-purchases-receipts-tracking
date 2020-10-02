@@ -23,7 +23,7 @@ class Category extends Model
      */
     protected $fillable = [
         'name',
-        'sub-category',
+        'sub_category',
     ];
 
     /**

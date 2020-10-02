@@ -22,10 +22,10 @@ class Grocery extends Model
      * @var array
      */
     protected $fillable = [
-        'item-id',
+        'item_id',
         'price',
         'qty',
-        'receipt-id'
+        'receipt_id'
     ];
 
     /**
@@ -33,17 +33,19 @@ class Grocery extends Model
      */
     public function receipt()
     {
-        return $this->hasOne('App\Models\Receipt');
+        return $this->belongsTo('App\Models\Receipt');
     }
 
     /**
      * Get the item for the grocery.
      * 
      * I know this sounds weird to say in English. The "groceries" table isn't worded correctly, I think. Or I have too many tables defineed and the "groceries" table is not necessary
+     * I think "Groceries" table = "Line Items" table to put it another way
+     * 
      */
     public function item()
     {
-        return $this->hasOne('App\Models\item');
+        return $this->belongsTo('App\Models\item'); //should this be belongsTo or hasOne?
     }
 
 }

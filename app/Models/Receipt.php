@@ -22,10 +22,10 @@ class Receipt extends Model
      * @var array
      */
     protected $fillable = [
-        'purchase-date',
-        'payment-method',
-        'discount-usd',
-        'store-id'
+        'purchase_date',
+        'payment_method',
+        'discount_usd',
+        'store_id'
     ];
 
     /**

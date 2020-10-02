@@ -22,10 +22,10 @@ class ReceiptFactory extends Factory
     public function definition()
     {
         return [
-            'purchase-date' => $this->faker->dateTime(),
-            'payment-method' => $this->faker->creditCardType,
-            'discount-usd' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10),
-            'store-id' => $this->faker->randomDigitNot(0)
+            'purchase_date' => $this->faker->dateTime(),
+            'payment_method' => $this->faker->creditCardType,
+            'discount_usd' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10),
+            'store_id' => $this->faker->randomDigitNot(0)
         ];
     }
 }
