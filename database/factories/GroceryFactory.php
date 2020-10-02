@@ -25,7 +25,7 @@ class GroceryFactory extends Factory
             'item_id' => $this->faker->randomDigitNot(0),
             'price' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 0, $max = 10),
             'qty' => $this->faker->numberBetween($min = 1, $max = 5),
-            'receipt_id' => $this->faker->randomDigitNot(0)
+            'receipt_id' => $this->faker->numberBetween($min = 1, $max = 2)
         ];
     }
 }

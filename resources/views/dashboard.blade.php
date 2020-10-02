@@ -11,24 +11,40 @@
                 <div>
                     <h1 style="font-size: 24px;">Welcome to The Dashboard</h1>
                     <h2 style="font-size: 18px;">Receipts</h2>
-                    <table>
-                    <tr>
-                        <td>Id</td>
-                        <td>Purchase Date</td>
-                        <td>Payment Method</td>
-                        <td>Discount $</td>
-                        <td>Store Id</td>
-                    </tr>
                     @foreach ($receipts as $receipt)
-                    <tr>
-                        <td>{{ $receipt->id }}</td>
-                        <td>{{ $receipt->purchase_date }}</td>
-                        <td>{{ $receipt->payment_method }}</td>
-                        <td>${{ $receipt->discount_usd }}</td>
-                        <td>{{ $receipt->store->name }}</td>
-                    </tr>
-                    @endforeach
+                    <table>
+                        <tr>
+                            <td>Id</td>
+                            <td>Purchase Date</td>
+                            <td>Payment Method</td>
+                            <td>Discount $</td>
+                            <td>Store Id</td>
+                        </tr>
+                        <tr>
+                            <td>{{ $receipt->id }}</td>
+                            <td>{{ $receipt->purchase_date }}</td>
+                            <td>{{ $receipt->payment_method }}</td>
+                            <td>${{ $receipt->discount_usd }}</td>
+                            <td>{{ $receipt->store->name }}</td>
+                        </tr>
                     </table>
+                    <h2 style="font-size: 18px;">Receipt Items</h2>
+                    <table>
+                        <tr>
+                            <td>Id</td>
+                            <td>Name</td>
+                            <td>Category</td>
+                        </tr>
+                            @foreach ($receipt->items as $item)
+                        <tr>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->category->name }}</td>
+                        </tr>
+                            @endforeach
+                        @endforeach
+                    </table>
+
                     <h2 style="font-size: 18px;">Stores</h2>
                     <table>
                     <tr>
@@ -70,7 +86,7 @@
                     <tr>
                         <td>{{ $item->id }}</td>
                         <td>{{ $item->name }}</td>
-                        <td>{{ $item->category }}</td>
+                        <td>{{ $item->category->name }}</td>
                     </tr>
                     @endforeach
                     </table>
