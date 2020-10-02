@@ -31,7 +31,7 @@ class Store extends Model
      */
     public function receipts()
     {
-        return $this->hasMany('App\Models\Receipt');
+        return $this->hasMany('App\Models\Receipt'); //fk store_id
     }
 
 }

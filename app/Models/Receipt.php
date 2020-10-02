@@ -41,16 +41,32 @@ class Receipt extends Model
      */
     public function groceries()
     {
-        return $this->hasMany('App\Models\Grocery');
+        return $this->hasMany('App\Models\Grocery'); //fk receipt_id
     }
 
     /**
      * Get the receipt's items
+     * select i.name, g.price from groceries g
+     * raw sql:
+     * * LEFT OUTER JOIN receipts r 
+     * *    on g.receipt_id = r.id
+     * * LEFT OUTER JOIN items i
+     * *    on g.item_id = i.id
+     * * where r.id = 1
      */
     public function items()
     {
-        return $this->hasManyThrough('App\Models\groceries', 'App\Models\items');
+        // return $this->belongsToMany('App\Models\Item')->using('App\Models\Grocery','item_id');
+        return $this->hasManyThrough(
+            'App\Models\Item',
+            'App\Models\Grocery',
+            'item_id', // Foreign key on Grocery table...
+            'id', // Foreign key on Item table...does not exist
+            'id', // Local key on Item table... 
+            'id' // Local key on Grocery table...
+        );
     }
+    // }
 
     
 }

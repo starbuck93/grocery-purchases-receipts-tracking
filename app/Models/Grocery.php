@@ -45,7 +45,7 @@ class Grocery extends Model
      */
     public function item()
     {
-        return $this->belongsTo('App\Models\item'); //should this be belongsTo or hasOne?
+        return $this->belongsTo('App\Models\Item'); //should this be belongsTo or hasOne?
     }
 
 }
