@@ -25,7 +25,7 @@
                         <td>{{ $receipt->purchase_date }}</td>
                         <td>{{ $receipt->payment_method }}</td>
                         <td>${{ $receipt->discount_usd }}</td>
-                        <td>{{ $receipt->store_id }}</td>
+                        <td>{{ $receipt->store->name }}</td>
                     </tr>
                     @endforeach
                     </table>

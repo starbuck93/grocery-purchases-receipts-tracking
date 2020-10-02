@@ -33,7 +33,7 @@ class Receipt extends Model
      */
     public function store()
     {
-        return $this->hasOne('App\Models\Store');
+        return $this->belongsTo('App\Models\Store'); //changed from hasOne
     }
 
     /**
