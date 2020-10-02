@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Receipt extends Model
 {
@@ -46,8 +47,8 @@ class Receipt extends Model
 
     /**
      * Get the receipt's items
-     * select i.name, g.price from groceries g
      * raw sql:
+     * * select i.name, g.price from groceries g
      * * LEFT OUTER JOIN receipts r 
      * *    on g.receipt_id = r.id
      * * LEFT OUTER JOIN items i
@@ -56,15 +57,20 @@ class Receipt extends Model
      */
     public function items()
     {
-        // return $this->belongsToMany('App\Models\Item')->using('App\Models\Grocery','item_id');
-        return $this->hasManyThrough(
-            'App\Models\Item',
-            'App\Models\Grocery',
-            'item_id', // Foreign key on Grocery table...
-            'id', // Foreign key on Item table...does not exist
-            'id', // Local key on Item table... 
-            'id' // Local key on Grocery table...
-        );
+        return $this->belongsToMany('App\Models\Item','groceries')/* ->using('App\Models\Grocery') */;
+        // return $this->hasManyThrough(
+        //     'App\Models\Item',
+        //     'App\Models\Grocery',
+        //     'item_id', // Foreign key on Grocery table...
+        //     'id', // Foreign key on Item table...does not exist
+        //     'id', // Local key on Item table... 
+        //     'id' // Local key on Grocery table...
+        // );
+        // the following does not work because Error "LogicException with message 'App/Models/Receipt::items must return a relationship instance.'"
+        // return DB::table('groceries')
+        //             ->leftJoin('receipts','groceries.receipt_id','=','receipts.id')
+        //             ->leftJoin('items','groceries.item_id','=','items.id')
+        //             ->where('receipts.id',$this->id);
     }
     // }
 
