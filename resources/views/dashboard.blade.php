@@ -1,117 +1,112 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ config('app.name', 'Laravel') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="my-2 mx-2">
+<x-app-layout> 
+    <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css') }}">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+        <div>
+            <div>
+                <div>
                     <h1>Welcome to The Dashboard</h1>
                     <h2>Total Spent: ${{ $total_spent }}</h2>
                     <h2>Your Favorite Item Is: {{ $favorite_item->name }}</h2>
                     <h2>Receipts</h2>
                     @foreach ($receipts as $receipt)
-                    <table class="table-auto shadow">
+                    <table class="table table-striped table-sm">
                         <tr>
-                            <th class="px-4 py-2">Id</th>
-                            <th class="px-4 py-2">Purchase Date</th>
-                            <th class="px-4 py-2">Payment Method</th>
-                            <th class="px-4 py-2">Discount $</th>
-                            <th class="px-4 py-2">Store Id</th>
-                            <th class="px-4 py-2">Total</th>
+                            <th >Id</th>
+                            <th >Purchase Date</th>
+                            <th >Payment Method</th>
+                            <th >Discount $</th>
+                            <th >Store Id</th>
+                            <th >Total</th>
                         </tr>
                         <tr>
-                            <td class="border px-4 py-2">{{ $receipt->id }}</td>
-                            <td class="border px-4 py-2">{{ $receipt->purchase_date }}</td>
-                            <td class="border px-4 py-2">{{ $receipt->payment_method }}</td>
-                            <td class="border px-4 py-2">${{ $receipt->discount_usd }}</td>
-                            <td class="border px-4 py-2">{{ $receipt->store->name }}</td>
-                            <td class="border px-4 py-2">$Total</td>
+                            <td>{{ $receipt->id }}</td>
+                            <td>{{ $receipt->purchase_date }}</td>
+                            <td>{{ $receipt->payment_method }}</td>
+                            <td>${{ $receipt->discount_usd }}</td>
+                            <td>{{ $receipt->store->name }}</td>
+                            <td>$Total</td>
                         </tr>
                     </table>
                     <h3>Receipt Items</h3>
-                    <table class="table-auto shadow">
+                    <table class="table table-striped table-sm">
                         <tr>
-                            <th class="px-4 py-2">Id</th>
-                            <th class="px-4 py-2">Name</th>
-                            <th class="px-4 py-2">Category</th>
-                            <th class="px-4 py-2">Price</th>
+                            <th >Id</th>
+                            <th >Name</th>
+                            <th >Category</th>
+                            <th >Price</th>
                         </tr>
                             @foreach ($receipt->items as $item)
                         <tr>
-                            <td class="border px-4 py-2">{{ $item->id }}</td>
-                            <td class="border px-4 py-2">{{ $item->name }}</td>
-                            <td class="border px-4 py-2">{{ $item->category->name }}</td>
-                            <td class="border px-4 py-2">$Price</td>
+                            <td>{{ $item->id }}</td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->category->name }}</td>
+                            <td>$Price</td>
                         </tr>
                             @endforeach
                         @endforeach
                     </table>
 
                     <h2>Stores</h2>
-                    <table class="table-auto shadow">
+                    <table class="table table-striped table-sm">
                     <tr>
-                        <th class="px-4 py-2">Id</th>
-                        <th class="px-4 py-2">Name</th>
-                        <th class="px-4 py-2">Location</th>
+                        <th >Id</th>
+                        <th >Name</th>
+                        <th >Location</th>
                     </tr>
                     @foreach ($stores as $store)
                     <tr>
-                        <td class="border px-4 py-2">{{ $store->id }}</td>
-                        <td class="border px-4 py-2">{{ $store->name }}</td>
-                        <td class="border px-4 py-2">{{ $store->location }}</td>
+                        <td>{{ $store->id }}</td>
+                        <td>{{ $store->name }}</td>
+                        <td>{{ $store->location }}</td>
                     </tr>
                     @endforeach
                     </table>
                     <h2>Categories</h2>
-                    <table class="table-auto shadow">
+                    <table class="table table-striped table-sm">
                     <tr>
-                        <th class="px-4 py-2">Id</th>
-                        <th class="px-4 py-2">Name</th>
-                        <th class="px-4 py-2">Sub-Category</th>
+                        <th >Id</th>
+                        <th >Name</th>
+                        <th >Sub-Category</th>
                     </tr>
                     @foreach ($categories as $category)
                     <tr>
-                        <td class="border px-4 py-2">{{ $category->id }}</td>
-                        <td class="border px-4 py-2">{{ $category->name }}</td>
-                        <td class="border px-4 py-2">{{ $category->sub_category }}</td>
+                        <td>{{ $category->id }}</td>
+                        <td>{{ $category->name }}</td>
+                        <td>{{ $category->sub_category }}</td>
                     </tr>
                     @endforeach
                     </table>
                     <h2>Items</h2>
-                    <table class="table-auto shadow">
+                    <table class="table table-striped table-sm">
                     <tr>
-                        <th class="px-4 py-2">Id</th>
-                        <th class="px-4 py-2">Name</th>
-                        <th class="px-4 py-2">Category</th>
+                        <th >Id</th>
+                        <th >Name</th>
+                        <th >Category</th>
                     </tr>
                     @foreach ($items as $item)
                     <tr>
-                        <td class="border px-4 py-2">{{ $item->id }}</td>
-                        <td class="border px-4 py-2">{{ $item->name }}</td>
-                        <td class="border px-4 py-2">{{ $item->category->name }}</td>
+                        <td>{{ $item->id }}</td>
+                        <td>{{ $item->name }}</td>
+                        <td>{{ $item->category->name }}</td>
                     </tr>
                     @endforeach
                     </table>
                     <h2>Groceries</h2>
-                    <table class="table-auto shadow">
+                    <table class="table table-striped table-sm">
                     <tr>
-                        <th class="px-4 py-2">Id</th>
-                        <th class="px-4 py-2">Item id</th>
-                        <th class="px-4 py-2">Price</th>
-                        <th class="px-4 py-2">Quantity</th>
-                        <th class="px-4 py-2">Receipt</th>
+                        <th >Id</th>
+                        <th >Item id</th>
+                        <th >Price</th>
+                        <th >Quantity</th>
+                        <th >Receipt</th>
                     </tr>
                     @foreach ($groceries as $grocery)
                     <tr>
-                        <td class="border px-4 py-2">{{ $grocery->id }}</td>
-                        <td class="border px-4 py-2">{{ $grocery->item_id }}</td>
-                        <td class="border px-4 py-2">${{ $grocery->price }}</td>
-                        <td class="border px-4 py-2">{{ $grocery->qty }}</td>
-                        <td class="border px-4 py-2">{{ $grocery->receipt_id }}</td>
+                        <td>{{ $grocery->id }}</td>
+                        <td>{{ $grocery->item_id }}</td>
+                        <td>${{ $grocery->price }}</td>
+                        <td>{{ $grocery->qty }}</td>
+                        <td>{{ $grocery->receipt_id }}</td>
                     </tr>
                     @endforeach
                     </table>

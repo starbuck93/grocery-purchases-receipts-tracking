@@ -24,6 +24,6 @@ Route::get('/', function () {
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
 
-//// Route::get('/add', function (){
-////     return view('add');
-//// });
+Route::get('/add', function (){
+    return view('add');
+})->name('add');
